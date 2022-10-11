@@ -8,6 +8,19 @@ Using the Node.js library, a Node.js service can be configured as a fully-functi
 
 The available functions are below.
 
+## JSON-LD {#json-ld}
+
+| Action  | Function                                                   | Explanation                             |
+| ------- | ---------------------------------------------------------- | --------------------------------------- |
+| Connect | [`jldConnect`](/docs/reference/nodejs/examples#jldConnect) | Connect to a JSON-LD Fluree ledger      |
+| Create  | [`jldCreate`](/docs/reference/nodejs/examples#jldCreate)   | Create a new JSON-LD ledger             |
+| Load    | [`jldLoad`](/docs/reference/nodejs/examples#jldLoad)       | Load an existing JSON-LD ledger         |
+| Stage   | [`jldStage`](/docs/reference/nodejs/examples##jldStage)    | Stage a JSON-LD transaction             |
+| Commit  | [`jldCommit`](/docs/reference/nodejs/examples#jldCommit)   | Commit staged transactions to ledger    |
+| Status  | [`jldStatus`](/docs/reference/nodejs/examples#jldStatus)   | Retrieve the status of a JSON-LD ledger |
+| DB      | [`jldDb`](/docs/reference/nodejs/examples#jldDb)           | Create a database from a JSON-LD ledger |
+| Query   | [`jldQuery`](/docs/reference/nodejs/examples#jldQuery)     | Query a JSON-LD database                |
+
 ## Main {#main}
 
 | Action         | Function                                                         | Explanation                                                                      |
