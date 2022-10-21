@@ -14,8 +14,8 @@ Downloaded endpoints can only be used in the downloadable versions of Fluree. Al
 
 Action | Endpoint | Explanation
 -- | -- | --
-DBs | `/fdb/dbs` | Returns a list of all ledgers in the transactor group.
-New DB | `/fdb/new-db` | Creates a new ledger
+Ledgers | [`/fdb/ledgers`](/docs/reference/http/examples/#ledgers) | Returns a list of all ledgers in the transactor group.
+New Ledger | `/fdb/new-ledger` | Creates a new ledger
 Export | `/fdb/[NETWORK-NAME]/[DBNAME-OR-DBID]/export` | Locally exports an existing ledger into either `.xml` or `.ttl`
 Delete DB | `/fdb/delete-db` | Deletes ledger (does not currently delete ledger files)
 Add Server | `/fdb/add-server` | (Beta feature) Dynamically adds a server to the network.
@@ -43,13 +43,13 @@ Test Transact With | `/fdb/[NETWORK-NAME]/[DBNAME-OR-DBID]/test-transact-with` |
 
 ## Password Authentication Endpoints {#password-authentication-endpoints}
 
-You need password authentication enabled to use these endpoints. See [config options](/reference/fluree_config.md#password-and-jwt-token-settings) for all password authentication options. See the [Password Management Guide](/concepts/identity/password_management.md) for more information. For an implementation example refer to the [Comics Store](https://github.com/fluree/developer-hub) repo located in the Fluree Developer Hub.
+You need password authentication enabled to use these endpoints. See [config options](/reference/fluree_config.md#password-and-jwt-token-settings) for all password authentication options. See the [Password Management Guide](/concepts/identity/password_management) for more information. For an implementation example refer to the [Comics Store](https://github.com/fluree/developer-hub) repo located in the Fluree Developer Hub.
 
 Action | Endpoint | Explanation
 -- | -- | --
-[Generate](/reference/http/examples.md#pwgenerate) | `/fdb/[NETWORK-NAME]/[DBID]/pw/generate` | Returns a valid token for a given user or role. Sets a valid password for that user or role.
-[Renew](/reference/http/examples.md#pwrenew) | `/fdb/[NETWORK-NAME]/[DBID]/pw/renew` | Given a token in the header and a new expiration time, returns a new token for a given user or role.
-[Login](/reference/http/examples.md#pwlogin) | `/fdb/[NETWORK-NAME]/[DBID]/pw/login` | Given a password and user or auth id, returns a valid token.
+[Generate](/reference/http/examples#pwgenerate) | `/fdb/[NETWORK-NAME]/[DBID]/pw/generate` | Returns a valid token for a given user or role. Sets a valid password for that user or role.
+[Renew](/reference/http/examples#pwrenew) | `/fdb/[NETWORK-NAME]/[DBID]/pw/renew` | Given a token in the header and a new expiration time, returns a new token for a given user or role.
+[Login](/reference/http/examples#pwlogin) | `/fdb/[NETWORK-NAME]/[DBID]/pw/login` | Given a password and user or auth id, returns a valid token.
 
 ## Other endpoints {#other-endpoints}
 
