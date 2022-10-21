@@ -1,19 +1,20 @@
 ---
 sidebar_position: 2
 ---
+
 # HTTP Examples
 
 In order to ensure speed of processing queries and transactions, different types of queries and transactions should be issued to different endpoints. All requests, unless otherwise specified, should be POST requests.
 
-## /dbs {#dbs}
+## /ledgers {#ledgers}
 
-A POST request with an empty object or a GET request to `/fdb/dbs` returns all the dbs in the transactor group. These requests do not need to be signed.
+A POST request with an empty object or a GET request to `/fdb/ledgers` returns all the ledgers in the transactor group. These requests do not need to be signed.
 
-An example of an unsigned request to `/dbs`.
+An example of an unsigned request to `/ledgers`.
 
 ```http
 Action: POST or GET
-Endpoint: http://localhost:8090/fdb/dbs
+Endpoint: http://localhost:8090/fdb/ledgers
 Headers: None
 Body: Null
 ```
@@ -35,7 +36,7 @@ Body: {"db/id": "test/one"}
 
 ## /nw-state {#nw-state}
 
-This provides a status of the Fluree network as recorded by a particular (ledger or transact) server.  Status information includes raft state, list of servers in the Fluree network, list of ledgers, and the current # of transactions queued.
+This provides a status of the Fluree network as recorded by a particular (ledger or transact) server. Status information includes raft state, list of servers in the Fluree network, list of ledgers, and the current # of transactions queued.
 
 To retrieve the status, simply send an empty POST request to the `/nw-state` endpoint.
 
@@ -232,14 +233,14 @@ For example, this query selects all chats and people at once.
 
 ```json
 {
-    "chatQuery": {
-        "select": ["*"],
-        "from": "chat"
-    },
-    "personQuery": {
-         "select": ["*"],
-        "from": "person"
-    }
+  "chatQuery": {
+    "select": ["*"],
+    "from": "chat"
+  },
+  "personQuery": {
+    "select": ["*"],
+    "from": "person"
+  }
 }
 ```
 
@@ -247,14 +248,14 @@ Any errors will be returned in a header, called `X-Fdb-Errors`. For example, inc
 
 ```json
 {
-    "incorrectCollection": {
-        "select": ["*"],
-        "from": "apples"
-    },
-    "personQuery": {
-         "select": ["*"],
-        "from": "person"
-    }
+  "incorrectCollection": {
+    "select": ["*"],
+    "from": "apples"
+  },
+  "personQuery": {
+    "select": ["*"],
+    "from": "person"
+  }
 }
 ```
 
@@ -438,13 +439,13 @@ This request may take some time to return. It will return a map, such as the fol
 
 ```json
 {
-    "block": 13,
-    "t": -27,
-    "stats": {
-        "flakes": 899990,
-        "size": 41435614,
-        "indexed": 13
-    }
+  "block": 13,
+  "t": -27,
+  "stats": {
+    "flakes": 899990,
+    "size": 41435614,
+    "indexed": 13
+  }
 }
 ```
 
@@ -461,13 +462,13 @@ This request may take some time to return. It will return a map, such as the fol
 
 ```json
 {
-    "block": 13,
-    "t": -27,
-    "stats": {
-        "flakes": 899990,
-        "size": 41435614,
-        "indexed": 13
-    }
+  "block": 13,
+  "t": -27,
+  "stats": {
+    "flakes": 899990,
+    "size": 41435614,
+    "indexed": 13
+  }
 }
 ```
 
@@ -506,9 +507,9 @@ Returns the results of a query using the existing ledger flakes, including flake
 
 The request expects a map with two key-value pairs:
 
-| Key      | Value                                                                              |
-| -------- | ---------------------------------------------------------------------------------- |
-| `flakes` | An array of valid flakes                                                           |
+| Key      | Value                                                                            |
+| -------- | -------------------------------------------------------------------------------- |
+| `flakes` | An array of valid flakes                                                         |
 | `query`  | A query to issue against the current ledger plus the flakes in the flakes value. |
 
 The `t` on the flakes provided has to be current with the latest ledger. For example, if you used `gen-flakes`, but then issued a transaction, you will need to use `gen-flakes` again to generate new valid flakes.
@@ -528,11 +529,11 @@ Given a valid set of flakes that could be added to the ledger at a given point i
 
 The request expects a map with the following key-value pairs:
 
-| Key      | Value                                                                                                                                                           |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `flakes` | An array of valid flakes                                                                                                                                        |
+| Key      | Value                                                                                                                                                         |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `flakes` | An array of valid flakes                                                                                                                                      |
 | `txn`    | A transaction to issue against the current ledger plus the flakes in the flakes value. This endpoint does _NOT_ actually write the transaction to the ledger. |
-| `auth`   | (Optional) The `_auth/id` with which to issue the transaction.                                                                                                  |
+| `auth`   | (Optional) The `_auth/id` with which to issue the transaction.                                                                                                |
 
 The `t` on the flakes provided has to be current with the latest ledger. For example, if you used `gen-flakes`, but then issued a transaction, you will need to use `gen-flakes` again to generate new valid flakes.
 
