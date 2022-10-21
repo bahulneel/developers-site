@@ -1,0 +1,33 @@
+---
+id: query
+title: "query"
+description: "All single queries in FlureeQL syntax that include a `select` key should be issued through the `/fdb/[NETWORK-NAME]/[DBNAME-OR-DBID]/query` endpoint. If you do not have `fdb-api-open` set to true (it is true by default), then you'll need to sign your query ([signing queries](/concepts/identity/signatures.md#signed-queries))."
+sidebar_label: query
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["ledger"],"description":"All single queries in FlureeQL syntax that include a `select` key should be issued through the `/fdb/[NETWORK-NAME]/[DBNAME-OR-DBID]/query` endpoint. If you do not have `fdb-api-open` set to true (it is true by default), then you'll need to sign your query ([signing queries](/concepts/identity/signatures.md#signed-queries)).","responses":{"200":{"description":"Query results","content":{"application/json":{"example":[{"_id":20482308432,"name":"Wallace Marking"},{"_id":42334923802,"name":"Bloober Scanlon"}]}}}},"method":"post","path":"/fdb/{network}/{ledger}/query","servers":[{"url":"http://localhost:{port}","description":"A locally running instance of Fluree","variables":{"port":{"default":"8090"}}}],"info":{"title":"Fluree HTTP API","version":"2.0.0"},"postman":{"name":"query","description":{"content":"All single queries in FlureeQL syntax that include a `select` key should be issued through the `/fdb/[NETWORK-NAME]/[DBNAME-OR-DBID]/query` endpoint. If you do not have `fdb-api-open` set to true (it is true by default), then you'll need to sign your query ([signing queries](/concepts/identity/signatures.md#signed-queries)).","type":"text/plain"},"url":{"path":["fdb",":network",":ledger","query"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"POST"}}
+sidebar_class_name: "post api-method"
+info_path: docs/reference/http/examples/fluree-http-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## query
+
+
+
+All single queries in FlureeQL syntax that include a `select` key should be issued through the `/fdb/[NETWORK-NAME]/[DBNAME-OR-DBID]/query` endpoint. If you do not have `fdb-api-open` set to true (it is true by default), then you'll need to sign your query ([signing queries](/concepts/identity/signatures.md#signed-queries)).
+
+<div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Query results
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs groupId={"schema-tabs"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"[\n  {\n    \"_id\": 20482308432,\n    \"name\": \"Wallace Marking\"\n  },\n  {\n    \"_id\": 42334923802,\n    \"name\": \"Bloober Scanlon\"\n  }\n]"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

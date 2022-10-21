@@ -1,0 +1,33 @@
+---
+id: new-ledger
+title: "new-ledger"
+description: "A ledger id must begin with a network name followed by a / and a dbid. Network names and dbids may only contain lowercase letters and numbers. In your request, you must specify db/id. If the network specified does not exist, it creates a new network. This request returns a command id, the request does not wait to ledger to be fully initialized before returning.These requests do not need to be signed."
+sidebar_label: new-ledger
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["main"],"description":"A ledger id must begin with a network name followed by a / and a dbid. Network names and dbids may only contain lowercase letters and numbers. In your request, you must specify db/id. If the network specified does not exist, it creates a new network. This request returns a command id, the request does not wait to ledger to be fully initialized before returning.These requests do not need to be signed.","requestBody":{"description":"Provide the name of the ledger","content":{"application/json":{"schema":{"type":"object","properties":{"ledger/id":{"type":"string","example":"test/one"}}}}}},"method":"post","path":"/fdb/new-ledger","servers":[{"url":"http://localhost:{port}","description":"A locally running instance of Fluree","variables":{"port":{"default":"8090"}}}],"jsonRequestBodyExample":{"ledger/id":"test/one"},"info":{"title":"Fluree HTTP API","version":"2.0.0"},"postman":{"name":"new-ledger","description":{"content":"A ledger id must begin with a network name followed by a / and a dbid. Network names and dbids may only contain lowercase letters and numbers. In your request, you must specify db/id. If the network specified does not exist, it creates a new network. This request returns a command id, the request does not wait to ledger to be fully initialized before returning.These requests do not need to be signed.","type":"text/plain"},"url":{"path":["fdb","new-ledger"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/reference/http/examples/fluree-http-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## new-ledger
+
+
+
+A ledger id must begin with a network name followed by a / and a dbid. Network names and dbids may only contain lowercase letters and numbers. In your request, you must specify db/id. If the network specified does not exist, it creates a new network. This request returns a command id, the request does not wait to ledger to be fully initialized before returning.These requests do not need to be signed.
+
+<MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+Provide the name of the ledger
+
+</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"ledger/id"} required={false} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem></MimeTabs>
+      
