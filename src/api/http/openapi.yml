@@ -1,0 +1,82 @@
+openapi: 3.1.0
+
+info:
+  title: Fluree HTTP API
+  version: 2.0.0
+
+servers:
+  - url: http://localhost:{port}
+    description: A locally running instance of Fluree
+    variables:
+      port:
+        default: '8090'
+
+paths:
+  /fdb/ledgers:
+    summary: ledgers
+    get:
+      tags:
+        - main
+      description: A POST request with an empty object or a GET request to /fdb/ledgers returns all the ledgers in the transactor group. These requests do not need to be signed.
+      summary: ledger
+      responses:
+        "200":
+          description: List of ledgers
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LedgerList"
+  /fdb/new-ledger:
+    summary: new-ledger
+    post:
+      tags: 
+        - main
+      description: A ledger id must begin with a network name followed by a / and a dbid. Network names and dbids may only contain lowercase letters and numbers. In your request, you must specify db/id. If the network specified does not exist, it creates a new network. This request returns a command id, the request does not wait to ledger to be fully initialized before returning.These requests do not need to be signed.
+      summary: new-ledger
+      requestBody:
+        description: Provide the name of the ledger
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                "ledger/id":
+                  type: string
+                  example: "test/one"
+  /fdb/{network}/{ledger}/query:
+    summary: query
+    post:
+      tags:
+        - ledger
+      description: All single queries in FlureeQL syntax that include a `select` key should be issued through the `/fdb/[NETWORK-NAME]/[DBNAME-OR-DBID]/query` endpoint. If you do not have `fdb-api-open` set to true (it is true by default), then you'll need to sign your query ([signing queries](/concepts/identity/signatures.md#signed-queries)).
+      summary: query
+      # requestBody:
+      #   description: A FlureeQL query
+      #   content:
+      #     application/json:
+      #       schema:
+      #         $ref: "#/components/schemas/QueryObject"
+      responses:
+        "200":
+          description: Query results
+          content:
+            application/json:
+              example:
+                - _id: 20482308432
+                  name: Wallace Marking
+                - _id: 42334923802
+                  name: Bloober Scanlon
+components:
+  schemas:
+    LedgerList:
+      schema:
+      type: array
+      items:
+        schema:
+          type: array
+          items: string
+      example:
+        - - test
+          - one
+        - - test
+          - two
