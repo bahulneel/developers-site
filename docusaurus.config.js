@@ -220,6 +220,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/fluree/developers-site/edit/main/",
+          docItemComponent: "@theme/ApiItem"
         },
         gtag: {
           // You can also use your "G-" Measurement ID here.
@@ -241,4 +242,24 @@ module.exports = {
       },
     ],
   ],
+  plugins: [
+    [
+      "docusaurus-plugin-openapi-docs",
+      {
+        id: "apiDocs",
+        docsPluginId: "classic",
+        config: {
+          http: {
+            // Note: petstore key is treated as the <id> and can be used to specify an API doc instance when using CLI commands
+            specPath: "src/api/http/openapi.yml", // Path to designated spec file
+            outputDir: "docs/reference/http/examples", // Output directory for generated .mdx docs
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+        },
+      },
+    ],
+  ],
+  themes: ["docusaurus-theme-openapi-docs"],
 };
